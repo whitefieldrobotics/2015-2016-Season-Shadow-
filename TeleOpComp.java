@@ -18,8 +18,8 @@ public class TeleOpComp extends OpMode {
     DcMotor rotation;
 
     //brush servos.
-    Servo redZip;
-    Servo blueZip;
+    Servo zipRight;
+    Servo zipLeft;
 
     public TeleOpComp() {
     }
@@ -32,8 +32,8 @@ public class TeleOpComp extends OpMode {
         motorRight = hardwareMap.dcMotor.get("Left_Drive");
         lift = hardwareMap.dcMotor.get("lift");
         rotation = hardwareMap.dcMotor.get("rotation");
-        redZip = hardwareMap.servo.get("redZip");
-        blueZip = hardwareMap.servo.get("blueZip");
+        zipRight = hardwareMap.servo.get("zip_right");
+        zipLeft = hardwareMap.servo.get("zip_left");
 
     }
 
@@ -76,34 +76,32 @@ public class TeleOpComp extends OpMode {
         // if the dpad left button is pushed then the brush will start to rotate in.
         if (gamepad1.b){
 
-            redZip.setPosition(1.0);
+            zipRight.setPosition(1.0);
         }
         else{
             //if the dpad right button is pushed then the brush will start to rotate out.
             if (gamepad1.dpad_right){
-                redZip.setPosition(0.5);
+                zipRight.setPosition(0.5);
             }
             else{
 
                 //if neither button is pushed then the servos will remain at rest.
-                redZip.setPosition(0.5);
+                zipRight.setPosition(0.5);
             }
 
         }
 
         if(gamepad1.x){
-            blueZip.setPosition(1.0);
+            zipLeft.setPosition(1.0);
         }
        else{
             if(gamepad1.dpad_right){
-                blueZip.setPosition(0.5);
+                zipLeft.setPosition(0.5);
             }
             else{
-                blueZip.setPosition(0.5);
+                zipLeft.setPosition(0.5);
             }
         }
-
-
 
         //////////////////////////////lift controls/////////////////////////////////////////////////
 
@@ -124,7 +122,6 @@ public class TeleOpComp extends OpMode {
                 lift.setPower(0);
             }
         }
-
 
         ////////////////////////////////////////////////////////////////////////////////////////////
 
